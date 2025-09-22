@@ -6,9 +6,9 @@ const corsHeaders = {
 	'Access-Control-Allow-Headers': 'Content-Type',
 }
 
-export async function OPTIONS() {
-  return NextResponse.json({}, { headers: corsHeaders })
-}
+// export async function OPTIONS() {
+  // return NextResponse.json({}, { headers: corsHeaders })
+// }
 
 export async function GET(req: NextRequest) {
 	const { method, body } = req
