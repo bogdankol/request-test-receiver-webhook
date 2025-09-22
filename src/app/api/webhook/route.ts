@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const corsHeaders = {
 	'Access-Control-Allow-Origin': '*', // allow all origins
-	'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-	'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+	'Access-Control-Allow-Methods': '*',
+	'Access-Control-Allow-Headers': 'Content-Type',
+}
+
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders })
 }
 
 export async function GET(req: NextRequest) {
