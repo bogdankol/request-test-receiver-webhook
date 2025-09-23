@@ -7,7 +7,7 @@ const corsHeaders = {
 }
 
 export async function OPTIONS() {
-  return NextResponse.json({}, { headers: corsHeaders })
+	return NextResponse.json({}, { headers: corsHeaders })
 }
 
 export async function GET(req: NextRequest) {
@@ -20,6 +20,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	const { method, body } = req
+
+	console.log({ body })
 	return NextResponse.json(
 		{ message: 'this is post request', body },
 		{ headers: corsHeaders },
