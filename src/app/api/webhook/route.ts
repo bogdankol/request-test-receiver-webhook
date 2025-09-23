@@ -11,7 +11,7 @@ export async function OPTIONS() {
 }
 
 export async function GET(req: NextRequest) {
-	const { method, body } = req
+	const body = await req.json()
 	return NextResponse.json(
 		{ message: 'this is get request', body },
 		{ headers: corsHeaders },
@@ -19,11 +19,15 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-	const { method, body } = req
+	const body = await req.json()
+  if(body?.someValueToCheck) {
+    console.log({ body })
+  } else {
+    return NextResponse.json({ errorMessage: 'noValuesProvided to backend', status: 403 })
+  }
 
-	console.log({ body })
 	return NextResponse.json(
-		{ message: 'this is post request', body },
+		{ message: 'this is post request', response: {...body} },
 		{ headers: corsHeaders },
 	)
 }
